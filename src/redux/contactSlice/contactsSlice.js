@@ -1,8 +1,8 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import {
   deleteContactThunk,
-  getContactsThunk,
-  postContactThunk,
+  fetchContactsThunk,
+  addContactThunk,
 } from './thunk';
 import { initialState } from './initialState';
 import {
@@ -20,7 +20,7 @@ const STATUS = {
   REJECTED: 'rejected',
 };
 
-const arrThunk = [deleteContactThunk, getContactsThunk, postContactThunk];
+const arrThunk = [deleteContactThunk, fetchContactsThunk, addContactThunk];
 
 const getArrThunkStatus = status => arrThunk.map(elem => elem[status]);
 
@@ -30,8 +30,8 @@ export const contactsSlice = createSlice({
   extraReducers: builder => {
     const { PENDING, FULFILLED, REJECTED } = STATUS;
     builder
-      .addCase(getContactsThunk.fulfilled, handleFulfilledGet)
-      .addCase(postContactThunk.fulfilled, handleFulfilledPost)
+      .addCase(fetchContactsThunk.fulfilled, handleFulfilledGet)
+      .addCase(addContactThunk.fulfilled, handleFulfilledPost)
       .addCase(deleteContactThunk.fulfilled, handleFulfilledDelete)
       .addMatcher(isAnyOf(...getArrThunkStatus(PENDING)), handlePending)
       .addMatcher(isAnyOf(...getArrThunkStatus(FULFILLED)), handleFulfilled)

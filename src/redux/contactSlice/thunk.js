@@ -1,17 +1,17 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { deleteContact, fetchContacts, postContact } from 'utils/mockapi';
+import { deleteContact, fetchContacts, addContact } from 'utils/mockapi';
 
-export const getContactsThunk = createAsyncThunk(
-  'contacts/getContacts',
+export const fetchContactsThunk = createAsyncThunk(
+  'contacts/fetchAll',
   async () => {
     return await fetchContacts();
   }
 );
 
-export const postContactThunk = createAsyncThunk(
-  'contacts/postContact',
+export const addContactThunk = createAsyncThunk(
+  'contacts/addContact',
   async data => {
-    return await postContact(data);
+    return await addContact(data);
   }
 );
 

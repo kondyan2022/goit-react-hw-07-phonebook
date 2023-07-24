@@ -8,7 +8,7 @@ export const fetchContacts = async (_, thunkAPI) => {
   return data;
 };
 
-export const postContact = async dataContact => {
+export const addContact = async dataContact => {
   const { data } = await axios.post('/contacts', dataContact);
   return data;
 };

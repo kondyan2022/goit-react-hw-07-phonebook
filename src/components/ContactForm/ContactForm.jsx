@@ -2,7 +2,7 @@ import { useState } from 'react';
 import AddForm from './ContactForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { getContacts } from 'redux/selectors';
-import { postContactThunk } from 'redux/contactSlice/thunk';
+import { addContactThunk } from 'redux/contactSlice/thunk';
 
 const ContactForm = () => {
   const [name, setName] = useState('');
@@ -36,7 +36,7 @@ const ContactForm = () => {
       alert(`${name} is already in contacts.`);
       return;
     }
-    dispatch(postContactThunk({ name: name, phone: number }));
+    dispatch(addContactThunk({ name: name, phone: number }));
     reset();
   };
 

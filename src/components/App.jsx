@@ -4,7 +4,7 @@ import ContactList from './ContactList/ContactList';
 import Filter from './Filter/Filter';
 
 import { useEffect } from 'react';
-import { getContactsThunk } from 'redux/contactSlice/thunk';
+import { fetchContactsThunk } from 'redux/contactSlice/thunk';
 import { getError, getIsLoading } from 'redux/selectors';
 import { Error } from './Heading/Heading.styled';
 
@@ -14,7 +14,7 @@ export const App = () => {
   const error = useSelector(getError);
 
   useEffect(() => {
-    dispatch(getContactsThunk());
+    dispatch(fetchContactsThunk());
   }, [dispatch]);
 
   return (
