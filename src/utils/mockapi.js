@@ -3,9 +3,8 @@ import axios from 'axios';
 axios.defaults.baseURL =
   'https://64b8491a21b9aa6eb079c089.mockapi.io/contacts/';
 
-export const fetchContacts = async () => {
+export const fetchContacts = async (_, thunkAPI) => {
   const { data } = await axios.get('/contacts');
-  console.log(data);
   return data;
 };
 
